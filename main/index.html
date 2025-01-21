@@ -1,12 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../src/">
+    <title>Home</title>
+    <link rel="stylesheet" href="../main/style.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
+
+
 <body>
-    
+    <script src="script.js"></script>
+    <header>
+        <nav class="firstNavbar">
+            <div>
+                <img src="../imagess/logo-removebg-preview.png" alt="logo" class="logo">
+            </div>
+            <button onclick="showDiscover()" class="discover">Discover</button>
+            <div class="btnDiv">
+                <button onclick="showSignUp()" class="btn1" id="signUpBtn">Sign up</button>
+                <button onclick="showLoginPage()" class="btn1" id="logInBtn">Log in</button>
+            </div>
+
+            <div class="profileDiv">
+                <svg id="accountIcon" class="defaultProfileIcon hidden" xmlns="http://www.w3.org/2000/svg" height="68px"
+                    viewBox="0 -960 960 960" width="68px" fill="#5f6368">
+                    <path
+                        d="M222-255q63-44 125-67.5T480-346q71 0 133.5 23.5T739-255q44-54 62.5-109T820-480q0-145-97.5-242.5T480-820q-145 0-242.5 97.5T140-480q0 61 19 116t63 109Zm257.81-195q-57.81 0-97.31-39.69-39.5-39.68-39.5-97.5 0-57.81 39.69-97.31 39.68-39.5 97.5-39.5 57.81 0 97.31 39.69 39.5 39.68 39.5 97.5 0 57.81-39.69 97.31-39.68 39.5-97.5 39.5Zm.66 370Q398-80 325-111.5t-127.5-86q-54.5-54.5-86-127.27Q80-397.53 80-480.27 80-563 111.5-635.5q31.5-72.5 86-127t127.27-86q72.76-31.5 155.5-31.5 82.73 0 155.23 31.5 72.5 31.5 127 86t86 127.03q31.5 72.53 31.5 155T848.5-325q-31.5 73-86 127.5t-127.03 86Q562.94-80 480.47-80Zm-.47-60q55 0 107.5-16T691-212q-51-36-104-55t-107-19q-54 0-107 19t-104 55q51 40 103.5 56T480-140Zm0-370q34 0 55.5-21.5T557-587q0-34-21.5-55.5T480-664q-34 0-55.5 21.5T403-587q0 34 21.5 55.5T480-510Zm0-77Zm0 374Z" />
+                </svg>
+                <div id="signOutDropdown"></div><button class="signOutBtn" id="signOutBtn">Sign Out</button>
+            </div>
+
+        </nav>
+    </header>
+    <div class="mainDiv">
+        <h3 class="text-white font-bold text-center animated-text">Enjoy unlimited music streaming at no cost.
+        </h3>
+        <p class="text-white text-center font-bold firstPar">Find and listen to millions of songs, albums and artists,
+            all completely free on ECHO.</p>
+        <div class='flex items-center  justify-center min-h-screen bg-[transparent] search'>
+
+            <div class="flex rounded-full bg-[#070e18] mt-[-490px] px-2 h-16 w-full max-w-[700px] ">
+                <button class="self-center flex p-1 cursor-pointer bg-[#080f1a]"> <svg width="30px" height="30px"
+                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                        <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg></button>
+
+                <input type="text" id="searchInput" class="w-full bg-[#0d1829] flex bg-transparent pl-2 text-[#67a57f] outline-0"
+                    placeholder="Search for artists, albums and tracks" />
+                <button type="submit" id="searchButton" class="relative p-2 w-14 h-16 mt-0 mr-[-4px] bg-[transparent] rounded-full">
+                    <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                        <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
+
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M14.9536 14.9458L21 21M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                                stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+
+                            </path>
+                        </g>
+
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <section class="about">
+        <h1 class="aboutH1">The music app without limits</h1>
+        <div class="aboutDiv">
+            <h4>Elevate your listening experience with <em><i>ECHO</i></em>, where every note resonates deeper, every
+                rhythm moves your
+                soul, and every song tells a story.</h4>
+        </div>
+        <div class="secondDiv">
+            <div class="leftDiv">
+                <p class="leftP">AD-FREE MUSIC BETWEEN SONGS</p>
+                <h2>Play anytime, anywhere. From any device.</h2> <br>
+                <p class="leftP">Stream music in the browser, on Phone, Tablet,<br> Smart TVs, Consoles, Chromecast,
+                    Apple TV and <br>
+                    more.
+                </p>
+            </div>
+            <div class="rightDiv">
+                <img class="image1" src="../imagess/logo-removebg-preview.png" alt="">
+                <h1>Listen to <br> music <br> for free.</h1>
+                <img class="image2" src="../imagess/music image2.avif" alt="">
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="secondSection">
+        <div class="bg-[#631563] w-[500px] h-[80vh] sectionItem1">
+            <img class="secondImage" src="../imagess/woman-80s.jpg" alt=""> <br><br><br>
+            With Echo, the world of music is at your fingertips. Enjoy free, unlimited streaming from a vast library,
+            explore new artists, and immerse yourself in the sounds you love—anytime, anywhere.
+        </div>
+        <div class="bg-[#582e35] w-[500px] h-[80vh] sectionItem2">
+            <img class="secondImage" src="../imagess/istockphoto4.jpg" alt=""><br><br><br>
+            Echo offers free, high-quality music streaming, letting you explore an ever-growing collection of songs from
+            every genre. Whether you're in the mood for a classic hit or the latest chart-topper, it's all here.
+        </div>
+        <div class="bg-[blue] w-[500px] h-[80vh] sectionItem3">
+            <img class="secondImage" src="../imagess/dancing.jpg" alt=""><br><br><br>
+            Echo brings you a world of music for free. From timeless classics to trending hits, explore thousands of
+            tracks, create your playlists, and enjoy endless streaming without limits.
+        </div>
+        <div class="bg-[#550f0f] w-[500px] h-[80vh] sectionItem4">
+            <img class="secondImage" src="../imagess/medium-shot-man.jpg" alt=""><br><br><br>
+            Discover, stream, and enjoy music with Echo. With an extensive selection of songs available for free, you
+            can experience the freedom of listening to any track, anywhere, at any time.
+        </div>
+    </section>
+
+
+    <div class="socials">
+        <p class="pSocials">ECHO is a free music streaming platform where you can listen to, save, and discover your
+            favorite artists and songs.</p><a href="https://www.facebook.com/share/1WKGaS2cdn/?mibextid=qi2Omg"
+            target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                <path
+                    d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
+            </svg>
+        </a> <a href="https://www.instagram.com/tommyakynz?utm_source=qr&igsh=OG04YjZyNWd1ZHNo" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                    d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+            </svg>
+        </a> <a href="https://twitter.com/Tommyakynz" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path
+                    d="M459.4 151.7c.3 4.5 .3 9.1 .3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53 51.7 63.7 129.3 105.3 216.4 109.8-1.6-7.8-2.6-15.9-2.6-24 0-57.8 46.8-104.9 104.9-104.9 30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3z" />
+            </svg>
+        </a> <a
+            href="https://www.linkedin.com/in/akintomide-oluwaseun-akinsefunmi-02a870131?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path
+                    d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
+            </svg>
+            </svg>
+        </a>
+    </div>
+    <hr><br><br><br>
+
+
+    <div class="copyright">
+        <svg class="newSvg" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+            fill="#EFEFEF">
+            <path
+                d="M400-320h160q17 0 28.5-11.5T600-360v-80h-80v40h-80v-160h80v40h80v-80q0-17-11.5-28.5T560-640H400q-17 0-28.5 11.5T360-600v240q0 17 11.5 28.5T400-320Zm80 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+        </svg>
+        <strong>2024 ECHO</strong>
+        <svg id="scrollUpBtn" class="arrowUp" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960"
+            width="48px" fill="#5f6368">
+            <path d="M452-244v-400L282-477l-42-43 241-241 241 241-42 42-168-168v402h-60Z" />
+        </svg>
+
+    </div>
+
+
+
+
+    <footer>
+        <nav>
+            <ul class="text-[#67a57f] ml-14 mb-10 footer">
+                <li><a href="http://127.0.0.1:5500/main/privacyPolicy.html">Privacy Policy</a></li>
+                <li><a href="http://127.0.0.1:5500/main/termOfService.html">Terms of Service</a></li>
+            </ul>
+        </nav>
+    </footer>
+
 </body>
+
+
 </html>

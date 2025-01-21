@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <!-- component -->
+    <div class="bg-[#072507] flex justify-center items-center h-full">
+        <!-- Left: Image -->
+        <div class="w-1/2 h-full hidden lg:block">
+            <img src="/imagess/pexel.jpeg" alt="Placeholder Image" class="object-cover w-full h-full">
+        </div>
+
+        <!-- Right: Login Form -->
+        <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
+            <img class="ml-[-120px] mt-[-287px] mb-16" src="/imagess/logo-removebg-preview.png" alt="">
+            <h1 class="text-2xl text-center text-[#948E8E] font-semibold mb-4">Login</h1><br>
+            <form action="#" id="login" method="POST">
+                <!-- Username or Email Input -->
+                <div class="mb-4">
+                    <label for="username" class="block text-gray-600">Username or Email</label>
+                    <input type="text" id="username" name="username"
+                        class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+                        autocomplete="off">
+                </div>
+                <!-- Password Input -->
+                <div class="mb-4">
+                    <label for="password" class="block text-gray-600">Password</label>
+                    <input type="password" id="password" name="password"
+                        class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+                        autocomplete="off">
+                </div>
+                <!-- Remember Me Checkbox -->
+                <div class="mb-4 flex items-center">
+                    <input type="checkbox" id="remember" name="remember" class="text-blue-500">
+                    <label for="remember" class="text-gray-600 ml-2">Remember Me</label>
+                </div>
+                <!-- Login Button -->
+                <button type="submit"
+                    class="bg-[#276B27] hover:bg-[#104110] text-white font-semibold rounded-md py-2 px-4 w-full">Login</button>
+            </form>
+            <!-- Sign up Link -->
+            <div class="mt-6 text-[#948E8E] text-center">
+                <a href="#" class="hover:underline" onclick="showSignUp()">Click here to Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('login').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const loginUsernameOrEmail = document.getElementById('username').value;
+            const loginPassword = document.getElementById('password').value;
+            const rememberMe = document.getElementById('remember').checked;
+
+            // GET USER DATA FROM LOCAL STORAGE
+            let userData = JSON.parse(localStorage.getItem(loginUsernameOrEmail));
+
+            if (!userData) {
+                const allUserDetails = Object.keys(localStorage);
+                for (let key of allUserDetails) {
+                    let user = JSON.parse(localStorage.getItem(key));
+                    if (user.username === loginUsernameOrEmail) {
+                        userData = user;
+                    }
+                }
+            }
+
+            if (userData && userData.password === loginPassword) {
+                if (rememberMe) {
+                    saveLoginDetails(userData.email, loginPassword);
+                } else {
+                    clearLoginDetails();
+                }
+
+                // logged-in status saved in localStorage
+                localStorage.setItem('isLoggedIn', 'true');
+
+                alert('Login successful!');
+                // Check if user came from Discover page
+                setTimeout(function () {
+                    const referrer = localStorage.getItem('currentPage') || 'index.html';
+                    window.location.href = referrer; 
+                }, 2000);
+            } else {
+                alert('Invalid username/email or password.');
+            }
+        });
+
+        // Function to save login details in localStorage
+        function saveLoginDetails(email, password) {
+            localStorage.setItem('savedUsername', email);
+            localStorage.setItem('savedPassword', password);
+        }
+
+        // Load saved login details  
+        window.onload = function () {
+            const savedUsername = localStorage.getItem('savedUsername');
+            const savedPassword = localStorage.getItem('savedPassword');
+
+            if (savedUsername) {
+                document.getElementById('username').value = savedUsername;
+            }
+            if (savedPassword) {
+                document.getElementById('password').value = savedPassword;
+            }
+
+            // Save the page referrer
+            const currentPage = localStorage.getItem('currentPage');
+            if (currentPage) {
+                localStorage.setItem('referrerPage', currentPage);
+            }
+        }
+
+        function showSignUp() {
+            setTimeout(function () {
+                window.location.href = './signupPage.html';
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>

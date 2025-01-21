@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #092412;
+        display: flex;
+        justify-content: flex-start;
+        min-height: 100vh;
+    }
+
+    header {
+        background-color: transparent;
+        backdrop-filter: blur(5px);
+        position: fixed;
+        width: 100%;
+        z-index: 999;
+    }
+
+    .discoverPageNavbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+        padding: 20px;
+        background-color: #000F05;
+        color: rgb(89, 110, 90);
+        z-index: 999;
+    }
+
+    .discoverPageNavbar ul {
+        display: flex;
+        list-style: none;
+    }
+
+    .discoverPageNavbar ul li {
+        text-decoration: none;
+        color: rgb(7, 121, 64);
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .btnDiscoverDiv {
+        margin-right: -145px;
+        display: flex;
+        gap: 5px;
+    }
+
+    .btn11 {
+        font-size: 14px;
+        padding: 10px 20px;
+        background-color: rgb(39, 107, 39);
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .btn11:hover {
+        background-color: rgb(19, 88, 54);
+    }
+
+    .bgVideoContainer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+    #bg-video {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    .bgVideoContainer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 150vh;
+        background: rgba(144, 238, 144, 0.3);
+        z-index: 1;
+    }
+
+    .videoText {
+        color: #276B27;
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        left: 60%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        overflow: hidden;
+    }
+
+    .defaultProfileIcon {
+        width: 50px;
+        height: 50px;
+        margin-top: 15px;
+    }
+
+
+    .profileDiv {
+        margin-top: 17px;
+        margin-right: -40px;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        display: inline-block;
+    }
+
+
+    .signOutDropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 5px;
+        border-radius: 4px;
+        margin-top: 5px;
+    }
+
+
+    .signOutBtn {
+        background-color: transparent6;
+        margin-left: -20px;
+        margin-top: -15px;
+        color: #d3ccda;
+        padding: 8px 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        display: none;
+    }
+
+
+    .profileDiv:hover .signOutBtn {
+        display: block;
+    }
+
+    .secondNavbar {
+        background-color: rgb(0, 15, 5);
+        width: 20%;
+        position: fixed;
+        height: 100%;
+        margin: 0px;
+        padding-top: 100px;
+        padding-left: 60px;
+    }
+
+    .secondNavbar ul {
+        list-style: none;
+        margin-left: -22px;
+        color: #7C8C6D;
+    }
+
+    .secondNavbar ul li:hover {
+        cursor: pointer;
+        color: rgb(64, 138, 57);
+    }
+
+    @media only screen and (max-width: 900px) {
+        .btnDiscoverDiv {
+            margin-left: 20px;
+            margin-right: 2px;
+            height: 50px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .btn11 {
+            font-size: 10px;
+            display: inline-block;
+            width: 75px;
+        }
+
+        .profileDiv {
+            margin-top: 17px;
+            margin-right: -5px;
+            width: 100px;
+            height: 100px;
+            position: relative;
+            display: inline-block;
+        }
+
+
+        .signOutBtn {
+            background-color: transparent6;
+            margin-left: -35px;
+            margin-top: -15px;
+            color: #d3ccda;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            display: none;
+        }
+
+    }
+
+    @media only screen and (max-width: 750px) {
+        .secondNavbar ul {
+            margin-left: -45px;
+        }
+
+        .logoDiv {
+            width: 255px;
+
+        }
+
+        .logo {
+            width: 100px;
+        }
+
+    }
+
+
+
+    @media only screen and (max-width: 500px) {
+
+        .btnDiscoverDiv {
+            margin-left: 20px;
+            margin-right: 5px;
+            height: 50px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .btn11 {
+            font-size: 10px;
+            display: inline-block;
+            width: 75px;
+
+        }
+
+        .profileDiv {
+            margin-top: 17px;
+            margin-right: -10px;
+            width: 100px;
+            height: 100px;
+            position: relative;
+            display: inline-block;
+        }
+
+
+        .signOutBtn {
+            background-color: transparent6;
+            margin-left: -45px;
+            margin-top: -15px;
+            color: #d3ccda;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .videoText {
+            display: flex;
+            width: 90%;
+        }
+    }
+
+    .main-content {
+        margin-left: 20%;
+        padding: 40px;
+        width: 80%;
+        display: none;
+    }
+
+    .artistsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+        height: 30vh;
+        padding-top: 120px;
+        gap: 20px;
+    }
+
+    .artist-item {
+        width: 300px;
+        height: auto;
+        gap: 30px;
+        background-color: transparent;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        padding-bottom: -60px;
+        box-sizing: border-box;
+        transition: transform 0.3s ease;
+        box-shadow: 5px 5px 15px 5px rgba(20, 131, 62, 0.3);
+    }
+
+    .artist-item:hover {
+        transform: scale(1.05);
+    }
+
+    .artist-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .track-item {
+        width: 220px;
+        height: auto;
+        background-color: transparent;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        box-sizing: border-box;
+        transition: transform 0.3s ease;
+    }
+
+    .track-item:hover {
+        transform: scale(1.05);
+    }
+
+    .track-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .play-button {
+        background-color: #28a745;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+        margin-top: 10px;
+    }
+
+    .play-button:hover {
+        background-color: #218838;
+    }
+</style>
+
+<body>
+
+    <header>
+        <nav class="discoverPageNavbar">
+            <div class="logoDiv">
+                <img src="../imagess/logo-removebg-preview.png" alt="logo" class="logo w-48">
+            </div>
+
+            <div class="flex rounded-full bg-[black] ml-14 px-2 h-8 w-full max-w-[600px]">
+                <input type="text" class="w-full bg-[#0d1829] flex bg-transparent pl-2 text-[#cccccc] outline-0"
+                    id="searchInput" placeholder="Search name, movie, or select options" />
+                <button type="submit" class="relative p-2 w-14 h-10 mt-[-5px] mr-[-8px] bg-[transparent] rounded-full"
+                    id="searchButton">
+                    <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                        <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
+
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M14.9536 14.9458L21 21M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                                stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </g>
+
+                    </svg>
+                </button>
+            </div>
+
+            <div class="btnDiscoverDiv">
+                <button onclick="showSignUpPageDiscover()" class="btn11" id="signUpBtn">Sign up</button>
+                <button onclick="showLoginPageDiscover()" class="btn11" id="logInBtn">Log in</button>
+            </div>
+
+            <div class="profileDiv">
+                <svg id="accountIcon" class="defaultProfileIcon hidden" xmlns="http://www.w3.org/2000/svg" height="68px"
+                    viewBox="0 -960 960 960" width="68px" fill="#5f6368">
+                    <path
+                        d="M222-255q63-44 125-67.5T480-346q71 0 133.5 23.5T739-255q44-54 62.5-109T820-480q0-145-97.5-242.5T480-820q-145 0-242.5 97.5T140-480q0 61 19 116t63 109Zm257.81-195q-57.81 0-97.31-39.69-39.5-39.68-39.5-97.5 0-57.81 39.69-97.31 39.68-39.5 97.5-39.5 57.81 0 97.31 39.69 39.5 39.68 39.5 97.5 0 57.81-39.69 97.31-39.68 39.5-97.5 39.5Zm.66 370Q398-80 325-111.5t-127.5-86q-54.5-54.5-86-127.27Q80-397.53 80-480.27 80-563 111.5-635.5q31.5-72.5 86-127t127.27-86q72.76-31.5 155.5-31.5 82.73 0 155.23 31.5 72.5 31.5 127 86t86 127.03q31.5 72.53 31.5 155T848.5-325q-31.5 73-86 127.5t-127.03 86Q562.94-80 480.47-80Zm-.47-60q55 0 107.5-16T691-212q-51-36-104-55t-107-19q-54 0-107 19t-104 55q51 40 103.5 56T480-140Zm0-370q34 0 55.5-21.5T557-587q0-34-21.5-55.5T480-664q-34 0-55.5 21.5T403-587q0 34 21.5 55.5T480-510Zm0-77Zm0 374Z" />
+                </svg>
+                <div id="signOutDropdown"></div><button class="signOutBtn" id="signOutBtn">Sign Out</button>
+            </div>
+        </nav>
+    </header>
+    <div class="bgVideoContainer">
+        <video autoplay muted loop id="bg-video">
+            <source src="../videos/Wizkid-Ft-Brent-Faiyaz-Piece-Of-My-Heart-Video-(TrendyBeatz.com).mp4"
+                type="video/mp4">
+        </video>
+
+        <div class="videoText">Listen to all the music you are looking for FOR FREE</div>
+    </div>
+    <nav class="secondNavbar">
+        <ul>
+            <li><a href="http://127.0.0.1:5500/main/index.html">Home</a></li><br>
+            <li><a href="#" id="artists">Artists</a></li><br>
+            <li><a href="#" id="tracks">Tracks</a></li><br>
+        </ul>
+    </nav>
+    <div class="displayAllTrack">
+
+
+    </div>
+    <div class="main-content" id="mainContent">
+        <div class="artistsContainer" id="artistsDiv">
+            
+        </div>
+    </div>
+
+    <script>
+        const clientID = 'a501a13aabdb469a843727f3b8777fad';
+        const clientSecret = '6dae6379e5c54eebb1cd5ced35d258f4';
+        const proxyUrl = 'http://localhost:8080/';
+
+        async function getAccessToken() {
+            try {
+                const response = await fetch(proxyUrl + 'https://accounts.spotify.com/api/token', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Basic ' + btoa(`${clientID}:${clientSecret}`),
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        grant_type: 'client_credentials',
+                    })
+                });
+
+                const data = await response.json();
+                return data.access_token;
+            } catch (error) {
+                console.error('Error fetching access token:', error);
+            }
+        }
+
+
+        // Function to fetch and display the artist's recent tracks
+        async function fetchArtistTracks(artistID) {
+            const accessToken = await getAccessToken();
+            const artistsDiv = document.getElementById('artistsDiv');
+            artistsDiv.innerHTML = '';
+
+            try {
+                const response = await fetch(proxyUrl + `https://api.spotify.com/v1/artists/${artistID}/top-tracks?country=US`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                    }
+                });
+
+                const data = await response.json();
+                const tracks = data.tracks;
+
+                // Add the artist's recent tracks to the page
+                tracks.forEach((track) => {
+                    const trackElement = document.createElement('div');
+                    trackElement.classList.add('track-item');
+
+                    // Create a clickable link to the track on Spotify
+                    trackElement.innerHTML = `
+                    <img src="${track.album.images[0].url}" alt="${track.name}" width="100" />
+                    <h6><a href="https://open.spotify.com/track/${track.id}" target="_blank">${track.name}<a></h6>
+                    <p>Artist: ${track.artists[0].name}</p>`;
+
+                    // Append the track element to the artistDiv
+                    artistsDiv.appendChild(trackElement);
+                });
+            }
+            catch (error) {
+                console.error('Error fetching artist tracks:', error);
+            }
+        }
+
+            // Render artist cards with "View Tracks" button
+            async function fetchArtists() {
+                const accessToken = await getAccessToken();
+                const artistsDiv = document.getElementById('artistsDiv');
+                artistsDiv.innerHTML = '';
+
+                const artistIDs = {
+                    wizkid: '3tVQdUvClmAT7URs9V3rsp',
+                    davido: '0Y3agQaa6g2r0YmHPOO9rh',
+                    burnaBoy: '3wcj11K77LjEY1PkEazffa',
+                    tems: '687cZJR45JO7jhk1LHIbgq',
+                    ashake: '3a1tBryiczPAZpgoZN9Rzg',
+                    bnxn: '3zaDigUwjHvjOkSn0NDf9x',
+                    seyiVibes: '4zmZ8lVLzGc84S4v2B1rLx',
+                    Adekunle: '2IK173RXLiCSQ8fhDlAb3s',
+                    TiwaSavage: '1hNaHKp2Za5YdOAG0WnRbc',
+                    YoungJohn: '4JM1zsVj1pt38Q8mhv5teI',
+                    Odumodublvck: '3LOm0AZjpwVQebvkyanjDy',
+                    Rema: '46pWGuE3dSwY3bMMXGBvVS',
+                    Fola: '5yOvAmpIR7hVxiS6Ls5DPO',
+                    patoranking: '2hKQc001G7ggs3ZyxMdkGq',
+                    omahlay: '5yOvAmpIR7hVxiS6Ls5DPO',
+                    kcee: '7KiINhQdLAupkwvJ0EelGG',
+                };
+
+                for (const [artistName, artistID] of Object.entries(artistIDs)) {
+                    const artistData = await fetch(`https://api.spotify.com/v1/artists/${artistID}`, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${accessToken}`,
+                        }
+                    });
+                    const artist = await artistData.json();
+                    const artistImage = artist.images[0] ? artist.images[0].url : 'default-artist-image.jpg';  // fallback image
+
+                    // Create the artist card with the "View Tracks" button
+                    const artistElement = document.createElement('div');
+                    artistElement.classList.add('artist-item');
+                    artistElement.innerHTML = `
+                    <img src="${artistImage}" alt="${artistName}" class="artist-image" width="100">
+                    <h5>${artistName}</h5>
+                    <button class="view-tracks" data-artist-id="${artistID}">View Tracks</button>
+                    `;
+
+                    // Append the artist element to the artistDiv
+                    artistsDiv.appendChild(artistElement);
+                }
+            }
+
+            // Event listener for "View Tracks" button to show the artist's recent tracks
+            document.getElementById('artistsDiv').addEventListener('click', (e) => {
+                if (e.target.classList.contains('view-tracks')) {
+                    const artistID = e.target.getAttribute('data-artist-id');
+                    fetchArtistTracks(artistID);
+                }
+            });
+
+        async function fetchPopularTracks() {
+            const accessToken = await getAccessToken();
+            const artistsDiv = document.getElementById('artistsDiv');
+            artistsDiv.innerHTML = '';
+
+            try {
+                const response = await fetch(proxyUrl + 'https://api.spotify.com/v1/browse/new-releases?limit=50', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                    }
+                });
+
+                const data = await response.json();
+                const tracks = data.albums.items;
+
+                tracks.forEach((album) => {
+                    const trackElement = document.createElement('div');
+                    trackElement.classList.add('track-item');
+                    trackElement.innerHTML = `
+                        <img src="${album.images[0].url}" alt="${album.name}" width="100" />
+                        <h6><a href="https://open.spotify.com/album/${album.id}" target="_blank">${album.name}</a></h6>
+                        <p>Artist: ${album.artists[0].name}</p>
+                    `;
+                    artistsDiv.appendChild(trackElement);
+                });
+            } catch (error) {
+                console.error('Error fetching popular tracks:', error);
+            }
+        }
+
+        function updateUI() {
+
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+            if (isLoggedIn === "true") {
+
+                document.getElementById("signUpBtn").style.display = "none";
+                document.getElementById("logInBtn").style.display = "none";
+                document.getElementById("accountIcon").classList.remove("hidden");
+            } else {
+                // Show Sign Up and Log In buttons, hide Account Icon
+                document.getElementById("signUpBtn").style.display = "block";
+                document.getElementById("logInBtn").style.display = "block";
+                document.getElementById("accountIcon").classList.add("hidden");
+                document.getElementById("signOutBtn").style.display = "none";
+            }
+        };
+
+        updateUI();
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const logInBtn = document.getElementById('logInBtn');
+            if (logInBtn) {
+                logInBtn.addEventListener('click', function () {
+                    localStorage.setItem('currentPage', 'discover.html');
+                });
+            } else {
+                console.error("Log In button not found!");
+            }
+            updateUI();
+        });
+
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const signOutBtn = document.getElementById('signOutBtn');
+            const accountIcon = document.getElementById('accountIcon');
+
+            // Function to handle sign out
+            signOutBtn.addEventListener('click', function () {
+                accountIcon.style.display = 'none';
+                signOutBtn.style.display = 'none';
+
+                localStorage.removeItem("isLoggedIn");
+                updateUI();
+
+                window.location.href = "./discover.html";
+            });
+        });
+
+
+        function showLoginPageDiscover() {
+            setTimeout(function () {
+                window.location.href = './loginPage.html';
+            }, 2000);
+        }
+
+        function showSignUpPageDiscover() {
+            setTimeout(function () {
+                window.location.href = './signupPage.html';
+            }, 2000);
+        }
+
+        function loginUser() {
+            localStorage.setItem("isLoggedIn", "true");
+            window.location.reload();
+        }
+
+
+        document.getElementById('artists').addEventListener('click', async () => {
+            document.getElementById('mainContent').style.display = 'block';
+            await fetchArtists();
+        });
+
+        document.getElementById('tracks').addEventListener('click', async () => {
+            document.getElementById('mainContent').style.display = 'block';
+            await fetchPopularTracks();
+        });
+
+       
+    </script>
+
+</body>
+
+</html>
